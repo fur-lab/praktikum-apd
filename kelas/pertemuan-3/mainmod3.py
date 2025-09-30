@@ -63,3 +63,13 @@
 #     tinggi2 = float(input("Masukan tinggi (cm): "))
 #     volumetabung = phi*(jarijari**2)*tinggi2
 #     print("Volume tabung adalah :", volumetabung)
+
+# studi kasus 2
+belanja = float(input("Masukan total belanja anda : "))
+
+if belanja > 1000000:
+    diskon = belanja * 0.2
+    print(f"diskon anda sebesar {diskon}")
+    totalbayar = belanja - diskon
+    print totalbayar
+elif
