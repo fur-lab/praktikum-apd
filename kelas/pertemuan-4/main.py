@@ -46,9 +46,9 @@
 # print("\nProgram selesai.")
 
 # frre post test
-h = 5
-for i in range (1, h):
-    hkiri = "*" * i
-    tes = "x"*((h-i)*2)
-    hkanan = "*" * i
-    print(hkiri + tes + hkanan)
+# h = 5
+# for i in range (1, h):
+#     hkiri = "*" * i
+#     tes = "x"*((h-i)*2)
+#     hkanan = "*" * i
+#     print(hkiri + tes + hkanan)
