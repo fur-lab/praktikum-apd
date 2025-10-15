@@ -54,5 +54,5 @@
 # (PTI, orsikom, basisdata) = tugas
 # print(PTI)
 
-tugas = ('rangkuman', 'arduino','scrapping', "rrr")
-(PTI, orsikom, *basisdata) = tugas
+# tugas = ('rangkuman', 'arduino','scrapping', "rrr")
+# (PTI, orsikom, *basisdata) = tugas
