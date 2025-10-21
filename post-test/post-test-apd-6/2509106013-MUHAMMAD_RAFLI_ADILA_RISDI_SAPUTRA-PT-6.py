@@ -66,7 +66,7 @@ while Program == "y":
 
                             last_id = 0
 
-                            for Mobil in Daftar_Mobil:
+                            for Mobil in Daftar_Mobil: # perulangan untuk id mobil agar tidak ada yang sama
                                 if Mobil > last_id:
                                     last_id = Mobil
                             id_baru = last_id + 1
@@ -77,15 +77,14 @@ while Program == "y":
                             Kondisi = input("Masukkan Kondisi (Baru/Bekas): ")
                             Harga = int(input("Masukkan Harga (Angka, tanpa titik/koma): ")) 
 
-                            Daftar_Mobil[id_baru] = {
+                            Daftar_Mobil[id_baru] = { # menambahkan dengan key ID = "id_baru" dan value merek,dll
                                 "Merek": Merek,
                                 "Model": Model,
                                 "Tahun": Tahun,
                                 "Kondisi": Kondisi,
                                 "Harga": Harga
                             }
-                            print("Mobil baru telah berhasil di tambahkan")
-
+                            
                         elif pilihan == "2": # Read
                             os.system("cls")
                             print("="*75)
@@ -137,9 +136,10 @@ while Program == "y":
                             id_hapus = int(input("Silahkan masukan no. mobil yang ingin anda hapus (dalam bentuk angka): "))
                         
                             if id_hapus in Daftar_Mobil:
-                                        
-                                        del Daftar_Mobil[id_hapus]   
-                                        print("Mobil berhasil di hapus.")                                 
+                                
+                                del Daftar_Mobil[id_hapus]   
+                                print("Mobil berhasil di hapus.")     
+                                                            
                             input("Tekan ENTER untuk kembali ke menu...")
                         
                             
