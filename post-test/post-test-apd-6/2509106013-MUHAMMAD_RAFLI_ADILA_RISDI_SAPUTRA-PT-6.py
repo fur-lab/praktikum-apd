@@ -10,11 +10,11 @@ Admin = False
 Program ="y"
 
 # daftar
-Daftar_Mobil = [
-    [1, "Toyota", "Yaris", 2011, "Bekas", 130000000],
-    [2, "Honda", "City", 2005, "Bekas", 70000000],
-    [3, "Daihatsu", "Ayla", 2025, "Baru", 160000000]
-]
+Daftar_Mobil = {
+1 : {"Merek" : "Toyota", "Model" : "Yaris", "Tahun" : 2011, "Kondisi" : "Bekas", "Harga" : 130000000},
+2 : {"Merek" : "Honda", "Model" : "City", "Tahun" : 2005, "Kondisi" : "Bekas", "Harga" : 70000000},
+3 : {"Merek" : "Daihatsu", "Model" : "Ayla", "Tahun" : 2011, "Kondisi" : "Baru", "Harga" : 160000000}
+}
 
 while Program == "y":
     percobaan = 0
@@ -66,10 +66,9 @@ while Program == "y":
 
                             last_id = 0
 
-                            if Daftar_Mobil: # Agar tau kalau Daftar_Mobil ada isinya
-                                for Mobil in Daftar_Mobil:
-                                    if Mobil[0] > last_id:
-                                        last_id = Mobil[0]
+                            for Mobil in Daftar_Mobil:
+                                if Mobil > last_id:
+                                    last_id = Mobil
                             id_baru = last_id + 1
 
                             Merek = input("Masukkan Merek: ")
@@ -78,8 +77,14 @@ while Program == "y":
                             Kondisi = input("Masukkan Kondisi (Baru/Bekas): ")
                             Harga = int(input("Masukkan Harga (Angka, tanpa titik/koma): ")) 
 
-                            Mobil = [id_baru, Merek, Model, Tahun, Kondisi, Harga]
-                            Daftar_Mobil.append(Mobil)
+                            Daftar_Mobil[id_baru] = {
+                                "Merek": Merek,
+                                "Model": Model,
+                                "Tahun": Tahun,
+                                "Kondisi": Kondisi,
+                                "Harga": Harga
+                            }
+                            print("Mobil baru telah berhasil di tambahkan")
 
                         elif pilihan == "2": # Read
                             os.system("cls")
@@ -89,12 +94,18 @@ while Program == "y":
 
                             # Tabel
                             print("=" * 75)
-                            print(f"{'ID':<5} | {'Merek':<10} | {'Model':<10} | {'Tahun':<6} | {'Kondisi':<7} | {'Harga (Rp.)':<20}")
+                            print(f"{"ID":<5} | {"Merek":<10} | {"Model":<10} | {"Tahun":<6} | {"Kondisi":<7} | {"Harga (Rp.)":<20}")
                             print("=" * 75)
                                 
                             # Loop untuk daftar mobil
-                            for mobil in Daftar_Mobil:
-                                print(f"{mobil[0]:<5} | {mobil[1]:<10} | {mobil[2]:<10} | {mobil[3]:<6} | {mobil[4]:<7} | {mobil[5]:<20} ")
+                            for Mobil, detail_mobil in Daftar_Mobil.items():
+                                Merek = detail_mobil["Merek"]
+                                Model = detail_mobil["Model"]
+                                Tahun = detail_mobil["Tahun"]
+                                Kondisi = detail_mobil["Kondisi"]
+                                Harga = detail_mobil["Harga"]
+
+                                print(f"{Mobil:<5} | {Merek:<10} | {Model:<10} | {Tahun:<6} | {Kondisi:<7} | {Harga:<20}")
 
                                 print("=" * 75)
                             
@@ -103,53 +114,34 @@ while Program == "y":
                         elif pilihan == "3": # Update
                             os.system("cls")
                             id_Ubah = int(input("Masukan ID Mobil yang ingin anda ubah (dalam bentuk angka): "))
-                            ada = False
 
-                            for i in range(len(Daftar_Mobil)):
-                                if Daftar_Mobil[i][0] == id_Ubah:
-                                    ada = True
+                            for Mobil, detail_mobil in Daftar_Mobil.items():
 
-                                    print(f"Anda akan mengedit: {Daftar_Mobil[i][1]} {Daftar_Mobil[i][2]}")
-                                    harga_baru_edit = int(input("Masukkan Harga (Angka): "))
-                                    
-                                    Daftar_Mobil[i][5] = harga_baru_edit  # Kedalam kolom ke-5
-                                    
-                                    print("Harga mobil berhasil diubah !")
+                                if id_Ubah in Daftar_Mobil:
+                                    detail_mobil = Daftar_Mobil[id_Ubah]
+                                    print(f"Anda akan mengubah {detail_mobil["Merek"]} ? ")
+
+                                    harga_baru_edit = int(input("Masukan Harga (angka saja): "))
+                                    Daftar_Mobil[id_Ubah]["Harga"] = harga_baru_edit
+
+                                    os.system("cls")
+                                    print("Harga mobil telah berhasil diubah")
+
                                     break 
             
                             input("Tekan ENTER untuk kembali ke menu...")
 
                         elif pilihan == "4": # Delete
                             os.system("cls")
-                            print("=" * 75)
-                            print(f"{'ID':<5} | {'Merek':<10} | {'Model':<10} | {'Tahun':<6} | {'Kondisi':<7} | {'Harga (Rp.)':<20}")
-                            print("=" * 75)
 
-                            for mobil in Daftar_Mobil: 
-                                print(f"{mobil[0]:<5} | {mobil[1]:<10} | {mobil[2]:<10} | {mobil[3]:<6} | {mobil[4]:<7} | {mobil[5]:<20} ")
-
-                                
-                            print("="*75)
                             id_hapus = int(input("Silahkan masukan no. mobil yang ingin anda hapus (dalam bentuk angka): "))
-                            print("="*75)
-                            
-                            ada = False
-
-                            for i in range(len(Daftar_Mobil)):
-                                    if Daftar_Mobil[i][0] == id_hapus:
-                                        ada = True
+                        
+                            if id_hapus in Daftar_Mobil:
                                         
-                                        nama_mobil = f"{Daftar_Mobil[i][1]} {Daftar_Mobil[i][2]}"
-                                        del Daftar_Mobil[i] # Hapus mobil menggunakan indeks ke-(i)   
+                                        del Daftar_Mobil[id_hapus]   
                                         print("Mobil berhasil di hapus.")                                 
-                                        break
-
-                            if not ada:
-                                os.system("cls")
-                                print("Mobil tidak ada dalam daftar !!!")
-                                input("Tekan ENTER untuk kembali ke menu...")
-                            
-                            
+                            input("Tekan ENTER untuk kembali ke menu...")
+                        
                             
 
                         elif pilihan == '5':
@@ -186,8 +178,15 @@ while Program == "y":
             print("=" * 75)
                 
             # Loop untuk daftar mobil
-            for mobil in Daftar_Mobil:
-                print(f"{mobil[0]:<5} | {mobil[1]:<10} | {mobil[2]:<10} | {mobil[3]:<6} | {mobil[4]:<7} | {mobil[5]:<20} ")
+            # Loop untuk daftar mobil
+            for Mobil, detail_mobil in Daftar_Mobil.items():
+                Merek = detail_mobil["Merek"]
+                Model = detail_mobil["Model"]
+                Tahun = detail_mobil["Tahun"]
+                Kondisi = detail_mobil["Kondisi"]
+                Harga = detail_mobil["Harga"]
+
+                print(f"{Mobil:<5} | {Merek:<10} | {Model:<10} | {Tahun:<6} | {Kondisi:<7} | {Harga:<20}")
 
                 print("=" * 75)
             
@@ -201,10 +200,9 @@ while Program == "y":
 
             last_id = 0
 
-            if Daftar_Mobil:
-                for Mobil in Daftar_Mobil:
-                    if Mobil[0] > last_id:
-                            last_id = Mobil[0]
+            for Mobil in Daftar_Mobil:
+                if Mobil > last_id:
+                    last_id = Mobil
             id_baru = last_id + 1
 
             Merek = input("Masukkan Merek: ")
@@ -213,8 +211,13 @@ while Program == "y":
             Kondisi = input("Masukkan Kondisi (Baru/Bekas): ")
             Harga = int(input("Masukkan Harga (Angka, tanpa titik/koma): ")) 
 
-            Mobil = [id_baru, Merek, Model, Tahun, Kondisi, Harga]
-            Daftar_Mobil.append(Mobil)
+            Daftar_Mobil[id_baru] = {
+                "Merek": Merek,
+                "Model": Model,
+                "Tahun": Tahun,
+                "Kondisi": Kondisi,
+                "Harga": Harga
+            }
             os.system("cls")
             print("Mobil anda telah berhasil dijual !")
             break
@@ -225,24 +228,12 @@ while Program == "y":
             id_beli = int(input("Silahkan masukan no. mobil yang ingin anda beli (dalam bentuk angka): "))
             print("="*75)
 
-            ada = False
-        
-            for i in range(len(Daftar_Mobil)):
-                if Daftar_Mobil[i][0] == id_beli:
-                    ada = True
-                    nama_mobil = f"{Daftar_Mobil[i][1]} {Daftar_Mobil[i][2]}"
-                    del Daftar_Mobil[i] # Beli mobil 
-                
-                    os.system("cls")
-                    print("Mobil telah berhasil anda beli.")
-                    Program = "n"
-                    break 
+            if id_beli in Daftar_Mobil:
+                        
+                        del Daftar_Mobil[id_beli]   
+                        print("Mobil berhasil di beli.")                                 
+            input("Tekan ENTER untuk kembali ke menu...")
                             
-            if not ada: # Jika tidak ada dalam daftar
-                os.system("cls")
-                print("Mobil dengan ID tersebut tidak ditemukan.")
-                input("Tekan ENTER untuk selesai...") 
-                break
 
         elif pilihan == '4':
             os.system("cls")
