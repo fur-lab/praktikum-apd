@@ -60,116 +60,116 @@
 # # Output:Hasil dari 5! adalah: 5040
 
 
-# # fungsi untuk menampilkan menu
-# def show_menu():
-#     print ("\n")
-#     print ("----------- MENU---------- ")
-#     print ("[1] Show Data")
-#     print ("[2] Insert Data")
-#     print ("[3] Edit Data")
-#     print ("[4] Delete Data")
-#     print ("[5] Exit")
-#     menu = input("PILIH MENU> ")
-#     print ("\n")
-#     if menu == "1":
-#         show_data()
-#     elif menu == "2":
-#         insert_data()
-#     elif menu == "3":
-#         edit_data()
-#     elif menu == "4":
-#         delete_data()
-#     elif menu == "5":
-#         exit()
-#     else:
-#         print ("Salah pilih!")
+# fungsi untuk menampilkan menu
+def show_menu():
+    print ("\n")
+    print ("----------- MENU---------- ")
+    print ("[1] Show Data")
+    print ("[2] Insert Data")
+    print ("[3] Edit Data")
+    print ("[4] Delete Data")
+    print ("[5] Exit")
+    menu = input("PILIH MENU> ")
+    print ("\n")
+    if menu == "1":
+        show_data()
+    elif menu == "2":
+        insert_data()
+    elif menu == "3":
+        edit_data()
+    elif menu == "4":
+        delete_data()
+    elif menu == "5":
+        exit()
+    else:
+        print ("Salah pilih!")
 
-# # Fungsi untuk menampilkan semua data
-# film = []
-# def show_data():
-#     if len(film) <= 0:
-#         print("Belum Ada data")
-#     else:
-#         print("ID | Judul Film")
-#     for indeks in range(len(film)):
-#         print(indeks, "|", film[indeks])
+# Fungsi untuk menampilkan semua data
+film = []
+def show_data():
+    if len(film) <= 0:
+        print("Belum Ada data")
+    else:
+        print("ID | Judul Film")
+    for indeks in range(len(film)):
+        print(indeks, "|", film[indeks])
 
-# # Fungsi untuk menambah data
-# def insert_data():
-#     film_baru = input("Judul Film: ")
-#     film.append(film_baru)
-#     print("Film berhasil ditambahkan!")
+# Fungsi untuk menambah data
+def insert_data():
+    film_baru = input("Judul Film: ")
+    film.append(film_baru)
+    print("Film berhasil ditambahkan!")
 
-# # Fungsi untuk mengedit data
-# def edit_data():
-#     show_data()
-#     indeks = int(input("Inputkan ID film: "))
-#     if indeks >= len(film) or indeks < 0:
-#         print("ID salah")
+# Fungsi untuk mengedit data
+def edit_data():
+    show_data()
+    indeks = int(input("Inputkan ID film: "))
+    if indeks >= len(film) or indeks < 0:
+        print("ID salah")
 
-#     else:
-#         judul_baru = input("Judul baru: ")
-#         film[indeks] = judul_baru
-#         print("Film berhasil diupdate!")
+    else:
+        judul_baru = input("Judul baru: ")
+        film[indeks] = judul_baru
+        print("Film berhasil diupdate!")
 
-# # Fungsi untuk menghapus data
-# def delete_data():
-#     show_data()
-#     indeks = int(input("Inputkan ID film: "))
-#     if indeks >= len(film) or indeks < 0:
-#         print("ID salah")
-#     else:
-#         film.remove(film[indeks])
-#         print("Film berhasil dihapus!")
+# Fungsi untuk menghapus data
+def delete_data():
+    show_data()
+    indeks = int(input("Inputkan ID film: "))
+    if indeks >= len(film) or indeks < 0:
+        print("ID salah")
+    else:
+        film.remove(film[indeks])
+        print("Film berhasil dihapus!")
 
-# # fungsi untuk menampilkan menu
-# def show_menu():
-#     print ("\n")
-#     print ("----------- MENU---------- ")
-#     print ("[1] Show Data")
-#     print ("[2] Insert Data")
-#     print ("[3] Edit Data")
-#     print ("[4] Delete Data")
-#     print ("[5] Exit")
-#     menu = input("PILIH MENU> ")
-#     print ("\n")
+# fungsi untuk menampilkan menu
+def show_menu():
+    print ("\n")
+    print ("----------- MENU---------- ")
+    print ("[1] Show Data")
+    print ("[2] Insert Data")
+    print ("[3] Edit Data")
+    print ("[4] Delete Data")
+    print ("[5] Exit")
+    menu = input("PILIH MENU> ")
+    print ("\n")
 
-#     if menu == "1":
-#         show_data()
-#     elif menu == "2":
-#         insert_data()
-#     elif menu == "3":
-#         edit_data()
-#     elif menu == "4":
-#         delete_data()
-#     else:
-#         print('Tidak ada di menu')
-
-
-# while True:
-#     show_menu()
+    if menu == "1":
+        show_data()
+    elif menu == "2":
+        insert_data()
+    elif menu == "3":
+        edit_data()
+    elif menu == "4":
+        delete_data()
+    else:
+        print('Tidak ada di menu')
 
 
-# ERROR HANDLING
-# harga = int(input("Masukan harga : "))
-# print(harga)
+while True:
+    show_menu()
 
-# try dan except buat nangkap errornya
-# try:
-#     angka = int(input('Masukkan Angka : '))
-# except ValueError:
-#     print('input yang anda masukkan bukan Integer (angka)') # sampai sini bener
-# else:
-#     print(angka) # kalau mau nambahin
-# finally:
-#     print("rawr") # tetap terprint walaupun error
 
-# try:
-#     usn = input('Username yang diinginkan : ')
-#     if len(usn) < 5:
-#         raise ValueError('Nama Minimal Memiliki 5 karakter') # bikin error sendiri
-# except ValueError as e:
-#     print(e)
+    # ERROR HANDLING
+    harga = int(input("Masukan harga : "))
+    print(harga)
+
+    # try dan except buat nangkap errornya
+    try:
+        angka = int(input('Masukkan Angka : '))
+    except ValueError:
+        print('input yang anda masukkan bukan Integer (angka)') # sampai sini bener
+    else:
+        print(angka) # kalau mau nambahin
+    finally:
+        print("rawr") # tetap terprint walaupun error
+
+    try:
+        usn = input('Username yang diinginkan : ')
+        if len(usn) < 5:
+            raise ValueError('Nama Minimal Memiliki 5 karakter') # bikin error sendiri
+    except ValueError as e:
+        print(e)
 
 
 # main.ipymb , buat jupiter notebook
@@ -185,14 +185,14 @@
 
 
 
-# studi kasus 2
-try:
-    pw = input("Masukan pw : ")
-    if len(pw) < 8 :
-        raise ValueError("pw minimal 8 karakter ")
-    if not pw.isdigit():
-        raise ValueError("pw wajib ada angka")
-except ValueError as e:
-    print(e)
+# # studi kasus 2
+# try:
+#     pw = input("Masukan pw : ")
+#     if len(pw) < 8 :
+#         raise ValueError("pw minimal 8 karakter ")
+#     if not pw.isdigit():
+#         raise ValueError("pw wajib ada angka")
+# except ValueError as e:
+#     print(e)
 
-# \t = buat menghilangkan spasi sebelum chara
+# # \t = buat menghilangkan spasi sebelum chara
